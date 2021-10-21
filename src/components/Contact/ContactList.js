@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from './ContactList.styled';
+// import { Button } from './ContactList.styled';
 import * as contactsOperations from '../../redux/Contact/contacts-operations';
 import { visibleContactsSelector } from '../../redux/Contact/contacts-selectors';
 import Table from '@mui/material/Table';
@@ -41,6 +41,9 @@ export default function ContactList() {
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.phone}</TableCell>
+              {/* <Button onClick={() => dispatch(contactsOperations.deleteContacts(row.id))}>
+                Delete
+              </Button> */}
             </TableRow>
           ))}
         </TableBody>
