@@ -2,7 +2,6 @@ import Form from './components/Form';
 import AppBar from './components/AppBar/AppBar';
 import Contact from './components/Contact';
 // import Filter from './components/Filter';
-
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';

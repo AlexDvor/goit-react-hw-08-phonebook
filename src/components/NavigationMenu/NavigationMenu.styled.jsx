@@ -8,6 +8,7 @@ export const ListItem = styled.ul`
   display: flex;
   list-style: none;
 `;
+
 export const Item = styled.li`
   &:not(:last-child) {
     margin-right: 20px;
