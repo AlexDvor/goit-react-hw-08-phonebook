@@ -1,4 +1,4 @@
-import Form from './components/Form';
+// import Form from './components/Form';
 import AppBar from './components/AppBar/AppBar';
 import Contact from './components/Contact';
 // import Filter from './components/Filter';
@@ -14,10 +14,10 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <Form />
+          <h2>(-_-)</h2>
         </Route>
 
-        <Route exact path="/contacts">
+        <Route path="/contacts">
           <Contact />
         </Route>
       </Switch>
