@@ -7,6 +7,7 @@ export const ListItem = styled.ul`
   font-size: 15px;
   display: flex;
   list-style: none;
+  padding: 0px;
 `;
 
 export const Item = styled.li`

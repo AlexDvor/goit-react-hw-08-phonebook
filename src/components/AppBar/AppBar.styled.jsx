@@ -11,5 +11,5 @@ export const ContainerBar = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  padding: 10px 20px;
+  padding: 10px 50px;
 `;

@@ -1,13 +1,13 @@
 import ContactList from './ContactList';
+import { Container } from '../Container/Container';
 
 function Contact() {
   return (
-    <>
+    <Container>
       <ul>
-        <h2>ggg</h2>
         <ContactList></ContactList>
       </ul>
-    </>
+    </Container>
   );
 }
 
