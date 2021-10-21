@@ -6,12 +6,14 @@ export async function fetchContacts() {
 }
 
 export async function postContacts({ name, number }) {
+  console.log(name);
+  console.log(number);
   return await axios({
     method: 'post',
     url: `${BASE_URL}/contacts`,
     data: {
       name,
-      number,
+      phone: number,
     },
   });
 }

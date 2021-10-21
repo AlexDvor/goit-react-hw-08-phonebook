@@ -2,11 +2,14 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FormItem, Input } from './Form.styled.jsx';
-import ButtonItem from '../Button';
+import { FormItem, Input, FormBox } from './Form.styled.jsx';
+// import ButtonItem from '../Button';
 import * as operations from '../../redux/Contact/contacts-operations';
 import * as selector from '../../redux/Contact/contacts-selectors';
 import { toast } from 'react-toastify';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export default function Form() {
   const [name, setName] = useState('');
@@ -51,34 +54,75 @@ export default function Form() {
   };
 
   return (
-    <>
-      <div>
-        <FormItem onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            value={name}
-            name="name"
-            onChange={handleChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-            placeholder="Name"
-          />
-          <Input
-            type="tel"
-            name="number"
-            value={number}
-            onChange={handleChange}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-            placeholder="Phone number"
-          />
-          <ButtonItem text="Add contact" />
-        </FormItem>
-      </div>
-    </>
+    <FormBox
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField
+        type="text"
+        id="outlined-basic"
+        label="Name"
+        value={name}
+        variant="filled"
+        name="name"
+        onChange={handleChange}
+      />
+      <TextField
+        type="text"
+        id="filled-basic"
+        label="Phone number"
+        variant="filled"
+        name="number"
+        value={number}
+        onChange={handleChange}
+      />
+      <Button
+        onClick={handleSubmit}
+        variant="contained"
+        size="small"
+        sx={{
+          height: '30px',
+          marginLeft: '20px',
+          padding: '10px',
+        }}
+      >
+        Add contact
+      </Button>
+    </FormBox>
   );
+  // return (
+  //   <>
+  //     <div>
+  //       <FormItem onSubmit={handleSubmit}>
+  //         <Input
+  //           type="text"
+  //           value={name}
+  //           name="name"
+  //           onChange={handleChange}
+  //           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+  //           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+  //           required
+  //           placeholder="Name"
+  //         />
+  //         <Input
+  //           type="tel"
+  //           name="number"
+  //           value={number}
+  //           onChange={handleChange}
+  //           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+  //           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+  //           required
+  //           placeholder="Phone number"
+  //         />
+  //         <ButtonItem text="Add contact" />
+  //       </FormItem>
+  //     </div>
+  //   </>
+  // );
 }
 
 Form.propTypes = {
