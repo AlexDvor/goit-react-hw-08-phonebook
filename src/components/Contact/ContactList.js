@@ -21,12 +21,7 @@ export default function ContactList() {
   }, [dispatch]);
 
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        width: '50%',
-      }}
-    >
+    <TableContainer component={Paper} sx={{ width: '50%' }}>
       <Table sx={{ minWidth: 250 }} aria-label="simple table">
         <TableHead>
           <TableRow>
