@@ -5,9 +5,13 @@ import * as yup from 'yup';
 
 export default function SignUpFormPage() {
   const validationSchema = yup.object().shape({
-    email: yup.string().typeError('Должно быть строкой').required('Обязательно'),
+    email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    confirmPassword: yup.string().typeError('Должно быть строкой').required('Обязательно'),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], 'Пароли не совпадают')
+      .typeError('Должно быть строкой')
+      .required('Обязательно'),
   });
 
   return (
@@ -27,6 +31,7 @@ export default function SignUpFormPage() {
         {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
           <WrapperForm>
             <StyledForm onSubmit={handleSubmit}>
+              <label htmlFor={'email'}>Email</label>
               <StyledInput
                 type="email"
                 name="email"
@@ -36,6 +41,7 @@ export default function SignUpFormPage() {
               />
               {errors.email && touched.email && errors.email && <p>{errors.email}</p>}
 
+              <label htmlFor={'Password'}>Password</label>
               <StyledInput
                 type="password"
                 name="password"
@@ -45,6 +51,7 @@ export default function SignUpFormPage() {
               />
               {errors.password && touched.password && errors.password && <p>{errors.password}</p>}
 
+              <label htmlFor={'confirmPassword'}>ConfirmPassword</label>
               <StyledInput
                 type="password"
                 name="confirmPassword"
