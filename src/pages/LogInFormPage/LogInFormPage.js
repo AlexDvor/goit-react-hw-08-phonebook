@@ -1,27 +1,21 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { WrapperForm, StyledInput, ErrorMessage, TitleForm } from './SignUpFormPage.styled';
+import { WrapperForm, StyledInput, ErrorMessage, TitleForm } from './LogInFormPage.styled';
 import * as yup from 'yup';
 
 //
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 
-export default function SignUpFormPage() {
+export default function LogInFormPage() {
   const validationSchema = yup.object().shape({
     email: yup.string().email('Please enter a valid email').required('This field is required'),
     password: yup.string().typeError('Should be a string').required('This field is required'),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref('password')], 'Password mismatch')
-      .typeError('Should be a string')
-      .required('This field is required'),
   });
 
   const initialValues = {
     email: '',
     password: '',
-    confirmPassword: '',
   };
 
   return (
@@ -36,7 +30,7 @@ export default function SignUpFormPage() {
       >
         {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
           <WrapperForm>
-            <TitleForm>SignUp</TitleForm>
+            <TitleForm>AUTHORIZATION</TitleForm>
             <Box
               component="form"
               sx={{
@@ -69,21 +63,8 @@ export default function SignUpFormPage() {
                 <ErrorMessage>{`*${errors.password}`}</ErrorMessage>
               )}
 
-              <StyledInput
-                label="confirmPassword"
-                variant="outlined"
-                type="password"
-                name="confirmPassword"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.confirmPassword}
-              />
-              {touched.confirmPassword && errors.confirmPassword && (
-                <ErrorMessage>{`*${errors.confirmPassword}`}</ErrorMessage>
-              )}
-
               <Button variant="contained" disabled={!isValid && !dirty} type="submit">
-                Registration
+                LogIn
               </Button>
             </Box>
           </WrapperForm>

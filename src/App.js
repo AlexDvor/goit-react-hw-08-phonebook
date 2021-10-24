@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/HomePage/HomePage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import SignUpFormPage from './pages/SignUpFormPage/SignUpFormPage';
+import LogInFormPage from './pages/LogInFormPage/LogInFormPage';
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
 
         <Route path="/signup">
           <SignUpFormPage />
+        </Route>
+
+        <Route path="/login">
+          <LogInFormPage />
         </Route>
       </Switch>
 
