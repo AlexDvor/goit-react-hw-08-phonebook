@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // pageBreakInside:
 import HomePage from './pages/HomePage/HomePage';
 import ContactPage from './pages/ContactPage/ContactPage';
+import SignUpFormPage from './pages/SignUpFormPage/SignUpFormPage';
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
 
         <Route path="/contacts">
           <ContactPage />
+        </Route>
+
+        <Route path="/signup">
+          <SignUpFormPage />
         </Route>
       </Switch>
 
