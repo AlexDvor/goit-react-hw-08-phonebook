@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
 
 export const ButtonStyled = styled(IconButton)`
   width: 40px;
@@ -17,3 +18,19 @@ export const ButtonStyled = styled(IconButton)`
     background-color: rgb(25, 118, 210);
   }
 `;
+
+export const BoxContent = styled(Box)`
+  display: flex;
+  justify-content: center;
+`;
+
+export const Style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 4,
+};

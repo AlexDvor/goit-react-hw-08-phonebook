@@ -7,7 +7,9 @@ export const FormItem = styled.form`
   width: 250px;
 `;
 export const Input = styled.input`
+  height: 25px;
   margin-bottom: 20px;
+  border: 1px solid black;
 `;
 
 export const FormBox = styled(Box)`
