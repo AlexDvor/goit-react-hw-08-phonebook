@@ -2,6 +2,9 @@ import React from 'react';
 import { Formik } from 'formik';
 import { StyledForm, WrapperForm, StyledInput, StyledButton } from './SignUpFormPage.styled';
 import * as yup from 'yup';
+//
+import { TextField } from '@mui/material';
+// import Box from '@mui/material/Box';
 
 export default function SignUpFormPage() {
   const validationSchema = yup.object().shape({
@@ -13,6 +16,12 @@ export default function SignUpFormPage() {
       .typeError('Должно быть строкой')
       .required('Обязательно'),
   });
+
+  const initialValues = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
 
   return (
     <>
@@ -30,7 +39,44 @@ export default function SignUpFormPage() {
       >
         {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
           <WrapperForm>
-            <StyledForm onSubmit={handleSubmit}>
+            <TextField
+              id="outlined-basic"
+              label="email"
+              variant="outlined"
+              type="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              autoComplete="true"
+            />
+            {touched.email && errors.email && <p>{errors.email}</p>}
+
+            <TextField
+              id="outlined-basic"
+              label="password"
+              variant="outlined"
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+            />
+            {touched.password && errors.password && <p>{errors.password}</p>}
+
+            <TextField
+              id="outlined-basic"
+              label="confirmPassword"
+              variant="outlined"
+              type="password"
+              name="confirmPassword"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.confirmPassword}
+            />
+            {touched.confirmPassword && errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+
+            {/* <StyledForm onSubmit={handleSubmit}>
               <label htmlFor={'email'}>Email</label>
               <StyledInput
                 type="email"
@@ -66,7 +112,7 @@ export default function SignUpFormPage() {
               <StyledButton disabled={!isValid && !dirty} type="submit">
                 Registration
               </StyledButton>
-            </StyledForm>
+            </StyledForm> */}
           </WrapperForm>
         )}
       </Formik>
