@@ -26,6 +26,7 @@ export const BoxContent = styled(Box)`
 
 export const Style = {
   position: 'absolute',
+  borderRadius: '5%',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
