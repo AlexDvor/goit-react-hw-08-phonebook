@@ -1,8 +1,8 @@
-import { ButtonStyled } from './Modal.styled';
 import { useState } from 'react';
-import AddIcon from '@mui/icons-material/Add';
+import { ButtonStyled } from './CreateContactModal.styled';
 import CreateContactForm from '../CreateContactForm/CreateContactForm';
-//
+//@mui
+import AddIcon from '@mui/icons-material/Add';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -26,10 +26,6 @@ export default function AddButton() {
 
   return (
     <>
-      <ButtonStyled onClick={() => setOpen(!false)}>
-        <AddIcon></AddIcon>
-      </ButtonStyled>
-
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -47,6 +43,10 @@ export default function AddButton() {
           </Box>
         </Fade>
       </Modal>
+
+      <ButtonStyled onClick={() => setOpen(!false)}>
+        <AddIcon></AddIcon>
+      </ButtonStyled>
     </>
   );
 }
