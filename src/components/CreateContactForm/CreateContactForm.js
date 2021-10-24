@@ -10,9 +10,11 @@ import * as operations from '../../redux/Contact/contacts-operations';
 import * as selector from '../../redux/Contact/contacts-selectors';
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export default function Form() {
+  const state = useSelector(selector.getContactsSelector);
+  const dispatch = useDispatch();
   const validationSchema = yup.object().shape({
     name: yup.string().typeError('Please enter a valid name').required('This field is required'),
     number: yup.number().typeError('Should be a numbers').required('This field is required'),
@@ -23,14 +25,23 @@ export default function Form() {
     number: '',
   };
 
+  const onSubmit = values => {
+    checkUserName(state, values);
+  };
+
+  const checkUserName = (userData, newData) => {
+    if (userData.some(item => item.name.toLowerCase() === newData.name.toLowerCase())) {
+      return toast.info('This name is already in your list');
+    }
+    dispatch(operations.postContacts(newData));
+  };
+
   return (
     <>
       <Formik
         initialValues={initialValues}
         validatedOnBlur
-        onSubmit={values => {
-          console.log(values);
-        }}
+        onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
