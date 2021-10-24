@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FormItem, Input, FormBox } from './Form.styled.jsx';
+import { FormItem, Input, FormBox } from './CreateContactFormstyled.jsx';
 import * as operations from '../../redux/Contact/contacts-operations';
 import * as selector from '../../redux/Contact/contacts-selectors';
 import { toast } from 'react-toastify';

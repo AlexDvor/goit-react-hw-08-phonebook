@@ -13,5 +13,5 @@ export const Input = styled.input`
 export const FormBox = styled(Box)`
   display: flex;
   flex-direction: column;
-  outline: 1px solid;
+  padding: 20px;
 `;
