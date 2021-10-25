@@ -2,26 +2,6 @@ import * as actions from './contacts-actions';
 import * as services from '../../services/fetchContacts';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// export const getContacts = () => async dispatch => {
-//   dispatch(actions.getContactsRequest());
-//   try {
-//     const contacts = await services.fetchContacts();
-//     dispatch(actions.getContactsSuccess(contacts));
-//   } catch (error) {
-//     dispatch(actions.getContactsError());
-//   }
-// };
-
-// export const postContacts = newUserData => async dispatch => {
-//   dispatch(actions.postContactsRequest());
-//   try {
-//     await services.postContacts(newUserData);
-//     dispatch(actions.postContactsSuccess());
-//     updatedUserList(dispatch);
-//   } catch (error) {
-//     dispatch(actions.postContactsError());
-//   }
-// };
 export const getContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, { rejectWithValue }) => {
@@ -65,5 +45,26 @@ export const deleteContacts = createAsyncThunk(
 //     dispatch(actions.deleteContactsSuccess());
 //   } catch (error) {
 //     dispatch(actions.deleteContactsError());
+//   }
+// };
+
+// export const getContacts = () => async dispatch => {
+//   dispatch(actions.getContactsRequest());
+//   try {
+//     const contacts = await services.fetchContacts();
+//     dispatch(actions.getContactsSuccess(contacts));
+//   } catch (error) {
+//     dispatch(actions.getContactsError());
+//   }
+// };
+
+// export const postContacts = newUserData => async dispatch => {
+//   dispatch(actions.postContactsRequest());
+//   try {
+//     await services.postContacts(newUserData);
+//     dispatch(actions.postContactsSuccess());
+//     updatedUserList(dispatch);
+//   } catch (error) {
+//     dispatch(actions.postContactsError());
 //   }
 // };
