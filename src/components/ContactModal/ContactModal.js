@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ButtonStyled, BoxContent, Style } from './CreateContactModal.styled';
+import { ButtonStyled, BoxContent, Style } from './ContactModal.styled';
 import CreateContactForm from '../CreateContactForm/CreateContactForm';
 //@mui
 import AddIcon from '@mui/icons-material/Add';
@@ -7,7 +7,7 @@ import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 
-export default function AddButton() {
+export default function ContactModal() {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
 

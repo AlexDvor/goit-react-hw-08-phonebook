@@ -1,13 +1,13 @@
 import { Container } from '../../components/Container/Container';
-import ContactList from '../../components/ContactList/ContactList';
 import { ContactBox } from './ContactPage.styled';
-import CreateContactModal from '../../components/CreateContactModal/CreateContactModal';
+import ContactList from '../../components/ContactList/ContactList';
+import ContactModal from '../../components/ContactModal/ContactModal';
 
 export default function ContactPage() {
   return (
     <Container>
       <ContactBox>
-        <CreateContactModal />
+        <ContactModal />
         <ContactList />
       </ContactBox>
     </Container>
