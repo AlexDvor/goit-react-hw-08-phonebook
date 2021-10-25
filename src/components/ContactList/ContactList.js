@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { ButtonStyled } from './ContactList.styled';
+// import { ButtonStyled } from './ContactList.styled';
 import * as contactsOperations from '../../redux/Contact/contacts-operations';
 import { visibleContactsSelector } from '../../redux/Contact/contacts-selectors';
 import Table from '@mui/material/Table';
@@ -11,7 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+// import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function ContactList() {
   const dataUsers = useSelector(visibleContactsSelector);
@@ -37,9 +37,9 @@ export default function ContactList() {
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.phone}</TableCell>
-              <ButtonStyled onClick={() => dispatch(contactsOperations.deleteContacts(row.id))}>
+              {/* <ButtonStyled onClick={() => dispatch(contactsOperations.deleteContacts(row.id))}>
                 <DeleteForeverIcon sx={{ color: '#3498db' }}></DeleteForeverIcon>
-              </ButtonStyled>
+              </ButtonStyled> */}
             </TableRow>
           ))}
         </TableBody>

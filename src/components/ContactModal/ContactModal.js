@@ -8,15 +8,15 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 
 export default function ContactModal() {
-  const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
 
   return (
     <>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={open}
+        open={showModal}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -24,14 +24,14 @@ export default function ContactModal() {
           timeout: 200,
         }}
       >
-        <Fade in={open}>
+        <Fade in={showModal}>
           <BoxContent sx={Style}>
-            <CreateContactForm />
+            <CreateContactForm setShowModal={setShowModal} />
           </BoxContent>
         </Fade>
       </Modal>
 
-      <ButtonStyled onClick={() => setOpen(!false)}>
+      <ButtonStyled onClick={() => setShowModal(!false)}>
         <AddIcon></AddIcon>
       </ButtonStyled>
     </>

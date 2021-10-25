@@ -9,7 +9,7 @@ import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import { toast } from 'react-toastify';
 
-export default function Form() {
+export default function CreateContactForm({ setShowModal }) {
   const state = useSelector(selector.getContactsSelector);
   const dispatch = useDispatch();
   const validationSchema = yup.object().shape({
@@ -31,6 +31,7 @@ export default function Form() {
       return toast.info('This name is already in your list');
     }
     dispatch(operations.postContacts(newData));
+    setShowModal(false);
   };
 
   return (
@@ -87,7 +88,7 @@ export default function Form() {
   );
 }
 
-Form.propTypes = {
+CreateContactForm.propTypes = {
   handleChange: PropTypes.func,
   getData: PropTypes.func,
   handleSubmit: PropTypes.func,
