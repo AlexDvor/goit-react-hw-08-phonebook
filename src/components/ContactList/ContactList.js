@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { Button } from './ContactList.styled';
+import { ButtonStyled } from './ContactList.styled';
 import * as contactsOperations from '../../redux/Contact/contacts-operations';
 import { visibleContactsSelector } from '../../redux/Contact/contacts-selectors';
 import Table from '@mui/material/Table';
@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function ContactList() {
   const dataUsers = useSelector(visibleContactsSelector);
@@ -31,14 +32,14 @@ export default function ContactList() {
         </TableHead>
         <TableBody>
           {dataUsers.map(row => (
-            <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.phone}</TableCell>
-              {/* <Button onClick={() => dispatch(contactsOperations.deleteContacts(row.id))}>
-                Delete
-              </Button> */}
+              <ButtonStyled onClick={() => dispatch(contactsOperations.deleteContacts(row.id))}>
+                <DeleteForeverIcon sx={{ color: '#3498db' }}></DeleteForeverIcon>
+              </ButtonStyled>
             </TableRow>
           ))}
         </TableBody>
@@ -46,27 +47,6 @@ export default function ContactList() {
     </TableContainer>
   );
 }
-
-// export default function ContactList() {
-//   const dataUsers = useSelector(visibleContactsSelector);
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(contactsOperations.getContacts());
-//   }, [dispatch]);
-
-//   return (
-//     <>
-//       {dataUsers.length > 0 &&
-//         dataUsers.map(({ name, id, number }) => (
-//           <li key={id}>
-//             {name} : {number}
-//             <Button onClick={() => dispatch(contactsOperations.deleteContacts(id))}>Delete</Button>
-//           </li>
-//         ))}
-//     </>
-//   );
-// }
 
 ContactList.propTypes = {
   data: PropTypes.arrayOf(
