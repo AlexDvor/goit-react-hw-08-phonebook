@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // pageBreakInside:
 import HomePage from './pages/HomePage/HomePage';
-import ContactPage from './pages/ContactPage/ContactPage';
+// import ContactPage from './pages/ContactPage/ContactPage';
 import SignUpFormPage from './pages/SignUpFormPage/SignUpFormPage';
 import LogInFormPage from './pages/LogInFormPage/LogInFormPage';
 
@@ -23,7 +23,8 @@ function App() {
         </Route>
 
         <Route path="/contacts">
-          <ContactPage />
+          {/* <ContactPage /> */}
+          <h3>ContactPage </h3>
         </Route>
 
         <Route path="/signup">
