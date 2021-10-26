@@ -21,6 +21,7 @@ import { getFetchingCurrent } from './redux/Auth/Auth-selector';
 
 function App() {
   const isFetchingCurrent = useSelector(getFetchingCurrent);
+  console.log(isFetchingCurrent);
   const dispatch = useDispatch();
 
   useEffect(() => {
