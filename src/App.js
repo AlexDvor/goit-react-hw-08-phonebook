@@ -11,8 +11,16 @@ import HomePage from './pages/HomePage/HomePage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import SignUpFormPage from './pages/SignUpFormPage/SignUpFormPage';
 import LogInFormPage from './pages/LogInFormPage/LogInFormPage';
+import { fetchCurrentUser } from './redux/Auth/Auth-operations';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
   return (
     <>
       <AppBar />

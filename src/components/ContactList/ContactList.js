@@ -10,16 +10,21 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { getIsLoggedIn } from '../../redux/Auth/Auth-selector';
 // import { ButtonStyled } from './ContactList.styled';
 // import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function ContactList() {
   const dataUsers = useSelector(visibleContactsSelector);
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(contactsOperations.getContacts());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(contactsOperations.getContacts());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <TableContainer component={Paper} sx={{ width: '50%' }}>
