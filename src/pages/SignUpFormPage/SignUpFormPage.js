@@ -1,14 +1,24 @@
-import React from 'react';
-import { Formik } from 'formik';
+// import React from 'react';
 import { WrapperForm, StyledInput, ErrorMessage, TitleForm } from './SignUpFormPage.styled';
+import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
-
+import { Formik } from 'formik';
 //
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
+import * as authOperations from '../../redux/Auth/Auth-operations';
 
 export default function SignUpFormPage() {
+  const dispatch = useDispatch();
+  const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
+
   const validationSchema = yup.object().shape({
+    name: yup.string().typeError('Should be a string').required('This field is required'),
     email: yup.string().email('Please enter a valid email').required('This field is required'),
     password: yup.string().typeError('Should be a string').required('This field is required'),
     confirmPassword: yup
@@ -18,10 +28,8 @@ export default function SignUpFormPage() {
       .required('This field is required'),
   });
 
-  const initialValues = {
-    email: '',
-    password: '',
-    confirmPassword: '',
+  const onSubmit = values => {
+    dispatch(authOperations.register(values));
   };
 
   return (
@@ -29,9 +37,7 @@ export default function SignUpFormPage() {
       <Formik
         initialValues={initialValues}
         validatedOnBlur
-        onSubmit={values => {
-          console.log(values);
-        }}
+        onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
@@ -45,6 +51,17 @@ export default function SignUpFormPage() {
               onSubmit={handleSubmit}
               autoComplete="off"
             >
+              <StyledInput
+                label="name"
+                variant="outlined"
+                type="text"
+                name="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+              />
+              {touched.name && errors.name && <ErrorMessage>{`*${errors.name}`}</ErrorMessage>}
+
               <StyledInput
                 label="email"
                 variant="outlined"

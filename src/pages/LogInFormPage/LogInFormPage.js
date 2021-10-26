@@ -1,21 +1,26 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { WrapperForm, StyledInput, ErrorMessage, TitleForm } from './LogInFormPage.styled';
 import * as yup from 'yup';
-
-//
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
+import * as authOperations from '../../redux/Auth/Auth-operations';
 
 export default function LogInFormPage() {
+  const dispatch = useDispatch();
+  const initialValues = {
+    email: '',
+    password: '',
+  };
+
   const validationSchema = yup.object().shape({
     email: yup.string().email('Please enter a valid email').required('This field is required'),
     password: yup.string().typeError('Should be a string').required('This field is required'),
   });
 
-  const initialValues = {
-    email: '',
-    password: '',
+  const onSubmit = values => {
+    dispatch(authOperations.login(values));
   };
 
   return (
@@ -23,9 +28,7 @@ export default function LogInFormPage() {
       <Formik
         initialValues={initialValues}
         validatedOnBlur
-        onSubmit={values => {
-          console.log(values);
-        }}
+        onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (

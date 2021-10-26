@@ -17,20 +17,27 @@ const register = createAsyncThunk('auth/register', async (userData, { rejectWith
     token.set(data.token);
     return data;
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue(console.log(error));
   }
 });
-// const register = credentials => async dispatch => {
-//   dispatch(authActions.registerRequest());
 
-//   try {
-//     const response = await axios.post('/users/signup', credentials);
+const login = createAsyncThunk('auth/login', async (userData, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.post('/users/login', userData);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    return rejectWithValue(console.log(error));
+  }
+});
 
-//     token.set(response.data.token);
-//     dispatch(authActions.registerSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.registerError(error.message));
-//   }
-// };
+const logOut = createAsyncThunk('auth/logOut ', async (_, { rejectWithValue }) => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {
+    return rejectWithValue(console.log(error));
+  }
+});
 
-export { register };
+export { register, login, logOut };
