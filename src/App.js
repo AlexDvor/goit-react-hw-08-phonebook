@@ -14,6 +14,8 @@ import LogInFormPage from './pages/LogInFormPage/LogInFormPage';
 import { fetchCurrentUser } from './redux/Auth/Auth-operations';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,17 +32,17 @@ function App() {
           <HomePage />
         </Route>
 
-        <Route path="/contacts">
+        <PrivateRoute path="/contacts">
           <ContactPage />
-        </Route>
+        </PrivateRoute>
 
-        <Route path="/signup">
+        <PublicRoute path="/signup" restricted>
           <SignUpFormPage />
-        </Route>
+        </PublicRoute>
 
-        <Route path="/login">
+        <PublicRoute path="/login" restricted>
           <LogInFormPage />
-        </Route>
+        </PublicRoute>
       </Switch>
 
       <ToastContainer autoClose={3000} />
