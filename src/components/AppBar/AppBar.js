@@ -1,16 +1,18 @@
 import { BackgroundAppBar, ContainerBar } from './AppBar.styled';
+import { useSelector } from 'react-redux';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import UserMenu from '../UserMenu/UserMenu';
 import AuthNav from '../AuthNav/AuthNav';
-// import { getUsername } from '../../redux/Auth/Auth-selector';
+import { getIsLoggedIn } from '../../redux/Auth/Auth-selector';
 
 export default function AppBar() {
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
   return (
     <BackgroundAppBar>
       <ContainerBar>
         <NavigationMenu />
-        <UserMenu></UserMenu>
-        <AuthNav></AuthNav>
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </ContainerBar>
     </BackgroundAppBar>
   );

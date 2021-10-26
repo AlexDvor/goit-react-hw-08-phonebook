@@ -24,7 +24,6 @@ function App() {
 
         <Route path="/contacts">
           <ContactPage />
-          <h3>ContactPage </h3>
         </Route>
 
         <Route path="/signup">

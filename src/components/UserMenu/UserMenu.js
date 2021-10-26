@@ -1,13 +1,15 @@
 import { UserMenuBox } from './UserMenu.styled';
 import Button from '@mui/material/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as authOperations from '../../redux/Auth/Auth-operations';
+import { getUsername } from '../../redux/Auth/Auth-selector';
 
 export default function UserMenu() {
+  const userName = useSelector(getUsername);
   const dispatch = useDispatch();
   return (
     <UserMenuBox>
-      <p>Alex</p>
+      <p>{userName}</p>
       <Button
         onClick={() => dispatch(authOperations.logOut())}
         variant="contained"
