@@ -19,7 +19,7 @@ const register = createAsyncThunk('auth/register', async (userData, { rejectWith
     token.set(data.token);
     return data;
   } catch (error) {
-    toast.info('This email is already registered ');
+    toast.error('This email is already registered ');
     return rejectWithValue(console.log(error));
   }
 });
@@ -30,6 +30,7 @@ const login = createAsyncThunk('auth/login', async (userData, { rejectWithValue 
     token.set(data.token);
     return data;
   } catch (error) {
+    toast.error('Incorrect username or password');
     return rejectWithValue(console.log(error));
   }
 });

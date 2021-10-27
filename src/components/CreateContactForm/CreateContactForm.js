@@ -12,6 +12,12 @@ import { toast } from 'react-toastify';
 export default function CreateContactForm({ setShowModal }) {
   const state = useSelector(selector.getContactsSelector);
   const dispatch = useDispatch();
+
+  const initialValues = {
+    name: '',
+    number: '',
+  };
+
   const validationSchema = yup.object().shape({
     name: yup
       .string()
@@ -20,11 +26,6 @@ export default function CreateContactForm({ setShowModal }) {
       .required('This field is required'),
     number: yup.number().typeError('Should be a numbers').required('This field is required'),
   });
-
-  const initialValues = {
-    name: '',
-    number: '',
-  };
 
   const onSubmit = values => {
     checkUserName(state, values);
