@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -14,9 +15,11 @@ const token = {
 const register = createAsyncThunk('auth/register', async (userData, { rejectWithValue }) => {
   try {
     const { data } = await axios.post('/users/signup', userData);
+    console.log('register: ', data);
     token.set(data.token);
     return data;
   } catch (error) {
+    toast.info('This email is already registered ');
     return rejectWithValue(console.log(error));
   }
 });
