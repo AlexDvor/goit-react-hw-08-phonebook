@@ -23,7 +23,7 @@ export default function SignUpFormPage() {
     password: yup.string().typeError('Should be a string').required('This field is required'),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref('password')], 'Password mismatch')
+      .oneOf([yup.ref('password')], 'Passwords must match')
       .typeError('Should be a string')
       .required('This field is required'),
   });
