@@ -57,7 +57,6 @@ export default function SignUpFormPage() {
                 '& > :not(style)': { m: 1, width: '250px' },
               }}
               onSubmit={handleSubmit}
-              autoComplete="on"
             >
               <StyledInput
                 label="name"

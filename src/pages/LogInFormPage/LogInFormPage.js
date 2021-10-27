@@ -40,7 +40,6 @@ export default function LogInFormPage() {
                 '& > :not(style)': { m: 1, width: '250px' },
               }}
               onSubmit={handleSubmit}
-              autoComplete="on"
             >
               <StyledInput
                 label="email"
@@ -50,6 +49,7 @@ export default function LogInFormPage() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
+                autoComplete="on"
               />
               {touched.email && errors.email && <ErrorMessage>{`*${errors.email}`}</ErrorMessage>}
 
