@@ -38,7 +38,7 @@ export default function ContactList() {
       <ListItems>
         {dataUsers.length > 0 ? (
           dataUsers.map(item => (
-            <Item>
+            <Item key={item.id}>
               <UserIconBox>
                 <PersonIcon></PersonIcon>
               </UserIconBox>
