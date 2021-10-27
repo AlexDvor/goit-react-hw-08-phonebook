@@ -36,7 +36,7 @@ export default function ContactList() {
         <div>Phone </div>
       </HeadingTitleBox>
       <ListItems>
-        {dataUsers.length > 0 ? (
+        {dataUsers.length > 0 &&
           dataUsers.map(item => (
             <Item key={item.id}>
               <UserIconBox>
@@ -50,10 +50,7 @@ export default function ContactList() {
                 </ButtonStyled>
               </div>
             </Item>
-          ))
-        ) : (
-          <h1>Your list is empty</h1>
-        )}
+          ))}
       </ListItems>
     </ContentWrapper>
   );

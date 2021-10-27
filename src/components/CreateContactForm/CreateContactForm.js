@@ -13,7 +13,11 @@ export default function CreateContactForm({ setShowModal }) {
   const state = useSelector(selector.getContactsSelector);
   const dispatch = useDispatch();
   const validationSchema = yup.object().shape({
-    name: yup.string().typeError('Please enter a valid name').required('This field is required'),
+    name: yup
+      .string()
+      .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
+      .typeError('Please enter a valid name')
+      .required('This field is required'),
     number: yup.number().typeError('Should be a numbers').required('This field is required'),
   });
 
