@@ -15,7 +15,7 @@ import {
   Phone,
 } from './ContactList.styled';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import PersonIcon from '@mui/icons-material/Person';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function ContactList() {
   const dataUsers = useSelector(visibleContactsSelector);
@@ -32,21 +32,23 @@ export default function ContactList() {
   return (
     <ContentWrapper>
       <HeadingTitleBox>
+        <div>User</div>
         <div>Name</div>
-        <div>Phone </div>
+        <div>Phone</div>
+        <div>Delete</div>
       </HeadingTitleBox>
       <ListItems>
         {dataUsers.length > 0 &&
           dataUsers.map(item => (
             <Item key={item.id}>
               <UserIconBox>
-                <PersonIcon></PersonIcon>
+                <AccountCircleIcon sx={{ color: '#3498db' }} />
               </UserIconBox>
               <Name>{item.name}</Name>
               <Phone>{item.number}</Phone>
               <div>
                 <ButtonStyled onClick={() => dispatch(contactsOperations.deleteContacts(item.id))}>
-                  <DeleteForeverIcon sx={{ color: '#3498db' }}></DeleteForeverIcon>
+                  <DeleteForeverIcon sx={{ color: '#dd3928' }}></DeleteForeverIcon>
                 </ButtonStyled>
               </div>
             </Item>

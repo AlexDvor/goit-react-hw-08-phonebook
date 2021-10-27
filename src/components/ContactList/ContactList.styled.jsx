@@ -23,8 +23,8 @@ export const Item = styled.li`
 export const HeadingTitleBox = styled.div`
   display: flex;
   border: 1px solid black;
-  justify-content: space-around;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 13px;
   border-radius: 10px;
   background-color: rgb(73, 151, 230);
   color: white;
