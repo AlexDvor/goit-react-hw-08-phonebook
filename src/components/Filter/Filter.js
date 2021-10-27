@@ -43,7 +43,7 @@ export default function Filter() {
 //   );
 // }
 
-// Filter.propTypes = {
-//   filter: PropTypes.string,
-//   onChange: PropTypes.func,
-// };
+Filter.propTypes = {
+  filter: PropTypes.string,
+  onChange: PropTypes.func,
+};
