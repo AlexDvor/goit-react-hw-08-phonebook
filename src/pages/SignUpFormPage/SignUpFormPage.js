@@ -57,7 +57,7 @@ export default function SignUpFormPage() {
                 '& > :not(style)': { m: 1, width: '250px' },
               }}
               onSubmit={handleSubmit}
-              autoComplete="off"
+              autoComplete="on"
             >
               <StyledInput
                 label="name"
@@ -67,6 +67,7 @@ export default function SignUpFormPage() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
+                autoComplete="on"
               />
               {touched.name && errors.name && <ErrorMessage>{`*${errors.name}`}</ErrorMessage>}
 
@@ -78,6 +79,7 @@ export default function SignUpFormPage() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
+                autoComplete="on"
               />
               {touched.email && errors.email && <ErrorMessage>{`*${errors.email}`}</ErrorMessage>}
 
@@ -89,6 +91,7 @@ export default function SignUpFormPage() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
+                autoComplete="on"
               />
               {touched.password && errors.password && (
                 <ErrorMessage>{`*${errors.password}`}</ErrorMessage>
@@ -102,6 +105,7 @@ export default function SignUpFormPage() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.confirmPassword}
+                autoComplete="on"
               />
               {touched.confirmPassword && errors.confirmPassword && (
                 <ErrorMessage>{`*${errors.confirmPassword}`}</ErrorMessage>

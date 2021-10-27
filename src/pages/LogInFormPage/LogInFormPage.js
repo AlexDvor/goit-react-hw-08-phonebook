@@ -40,7 +40,7 @@ export default function LogInFormPage() {
                 '& > :not(style)': { m: 1, width: '250px' },
               }}
               onSubmit={handleSubmit}
-              autoComplete="off"
+              autoComplete="on"
             >
               <StyledInput
                 label="email"
@@ -61,6 +61,7 @@ export default function LogInFormPage() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
+                autoComplete="on"
               />
               {touched.password && errors.password && (
                 <ErrorMessage>{`*${errors.password}`}</ErrorMessage>
