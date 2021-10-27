@@ -2,13 +2,8 @@ import styled from '@emotion/styled';
 
 export const ContentWrapper = styled.div`
   width: 670px;
-
-  /* outline: 1px solid black; */
 `;
-export const ListItems = styled.ul`
-  /* outline: 1px solid red; */
-  /* width: 250px; */
-`;
+export const ListItems = styled.ul``;
 export const Item = styled.li`
   margin-top: 20px;
   display: flex;
